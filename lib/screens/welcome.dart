@@ -1,9 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tictic/styles/spacings.dart';
+import 'package:tictic/widgets/bullets.dart';
+import 'package:tictic/widgets/text_slider.dart';
 
-class Welcome extends StatelessWidget {
-  Welcome({super.key});
+class Welcome extends StatefulWidget {
+  const Welcome({super.key});
+
+  @override
+  State<Welcome> createState() => _WelcomeState();
+}
+
+class _WelcomeState extends State<Welcome> {
+  int currentSliderIndex = 0;
+
+  final PageController _pageController = PageController();
 
   final List<String> _items = [
     'L’harmonie financière dans vos groupes, en toute simplicité !',
@@ -11,6 +22,12 @@ class Welcome extends StatelessWidget {
     'Calculs fastidieux ? Non merci. Optez pour la simplicité avec TicTic !',
     'TicTic : Vos dépenses partagées en toute simplicité !',
   ];
+
+  _onPageChanged(index) {
+    setState(() {
+      currentSliderIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,18 +54,19 @@ class Welcome extends StatelessWidget {
                 height: kVerticalPaddingL,
               ),
               // TODO : fix this !
-              SizedBox(
-                height: 60,
-                child: PageView(
-                  children: _items.map((item) {
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: kHorizontalPadding),
-                      child: Text(item),
-                    );
-                  }).toList(),
-                ),
+              TextSlider(
+                pageController: _pageController,
+                onPageChanged: _onPageChanged,
+                items: _items,
               ),
+              const SizedBox(
+                height: kVerticalPadding,
+              ),
+              Bullets(
+                items: _items,
+                pageController: _pageController,
+                currentSliderIndex: currentSliderIndex,
+              )
             ],
           ),
         ),

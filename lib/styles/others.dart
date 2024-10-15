@@ -6,3 +6,6 @@ final kShadow = BoxShadow(
   blurRadius: 7,
   offset: const Offset(0, 6), // changes position of shadow
 );
+
+const kBorderRadius = 20.0;
+const kBulletHeight = 4.0;
