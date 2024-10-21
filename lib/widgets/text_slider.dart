@@ -17,6 +17,7 @@ class TextSlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
+      // TODO : Fix this
       height: 60,
       child: PageView(
         controller: pageController,

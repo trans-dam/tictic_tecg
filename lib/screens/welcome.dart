@@ -1,7 +1,12 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tictic/contents/textes.dart';
+import 'package:tictic/screens/register.dart';
 import 'package:tictic/styles/spacings.dart';
 import 'package:tictic/widgets/bullets.dart';
+import 'package:tictic/widgets/button.dart';
+import 'package:tictic/widgets/text_diver.dart';
 import 'package:tictic/widgets/text_slider.dart';
 
 class Welcome extends StatefulWidget {
@@ -15,13 +20,6 @@ class _WelcomeState extends State<Welcome> {
   int currentSliderIndex = 0;
 
   final PageController _pageController = PageController();
-
-  final List<String> _items = [
-    'L’harmonie financière dans vos groupes, en toute simplicité !',
-    'Calculs instantanés, équité garantie avec TicTic !',
-    'Calculs fastidieux ? Non merci. Optez pour la simplicité avec TicTic !',
-    'TicTic : Vos dépenses partagées en toute simplicité !',
-  ];
 
   _onPageChanged(index) {
     setState(() {
@@ -47,26 +45,71 @@ class _WelcomeState extends State<Welcome> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Spacer(),
               SvgPicture.asset("assets/icons/logo.svg",
                   height: MediaQuery.of(context).size.height * kLogoRatio,
-                  semanticsLabel: 'Logo TicTic'),
+                  semanticsLabel: kSemanticsLabelLogo),
+              Spacer(),
               const SizedBox(
                 height: kVerticalPaddingL,
               ),
-              // TODO : fix this !
               TextSlider(
                 pageController: _pageController,
                 onPageChanged: _onPageChanged,
-                items: _items,
+                items: kWelcomeMessages,
               ),
               const SizedBox(
                 height: kVerticalPadding,
               ),
               Bullets(
-                items: _items,
+                items: kWelcomeMessages,
                 pageController: _pageController,
                 currentSliderIndex: currentSliderIndex,
-              )
+              ),
+              const SizedBox(
+                height: kVerticalPadding,
+              ),
+              Spacer(),
+              Button(
+                label: kLoginWithoutAccount,
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => Register(),
+                    ),
+                  );
+                },
+              ),
+              Column(children: [
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: kHorizontalPadding),
+                  child: TextDivider(),
+                ),
+                SingleChildScrollView(
+                  clipBehavior: Clip.none,
+                  scrollDirection: Axis.horizontal,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Button(
+                          onTap: () =>{},
+                          label: 'Je me connecte',
+                        ),
+                        const SizedBox(
+                          width: kHorizontalPadding,
+                        ),
+                        Button(
+                          onTap: () =>
+                          {},
+                          label: 'Créer mon compte',
+                        )
+                      ],
+                    ),
+                  ),
+                )
+              ],)
             ],
           ),
         ),

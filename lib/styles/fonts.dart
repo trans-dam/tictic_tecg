@@ -79,4 +79,3 @@ const kTextDiverStyle = TextStyle(
 );
 const kInfoIconSize = 15.0;
 
-
