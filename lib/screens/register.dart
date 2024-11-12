@@ -4,7 +4,7 @@ import 'package:tictic/styles/colors.dart';
 import 'package:tictic/styles/spacings.dart';
 import 'package:tictic/widgets/forms/register.dart';
 import 'package:tictic/widgets/logo.dart';
-import 'package:tictic/widgets/buttons/back_button.dart' as myBackButton;
+import 'package:tictic/widgets/buttons/back_button.dart' as back_button;
 import '../styles/fonts.dart';
 
 class Register extends StatelessWidget {
@@ -31,7 +31,7 @@ class Register extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const myBackButton.BackButton(),
+                  const back_button.BackButton(),
                   const Logo(),
                   const SizedBox(height: kVerticalPaddingL),
                   RegisterForm(),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tictic/contents/textes.dart';
 import 'package:tictic/screens/home.dart';
 import 'package:tictic/screens/register.dart';
@@ -109,7 +108,7 @@ class _WelcomeState extends State<Welcome> {
                             onTap: () {
                               Navigator.of(context).push(
                                 MaterialPageRoute(
-                                  builder: (context) => Register(),
+                                  builder: (context) => const Register(),
                                 ),
                               );
                             },

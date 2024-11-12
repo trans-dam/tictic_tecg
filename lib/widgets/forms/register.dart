@@ -57,6 +57,7 @@ class RegisterForm extends StatelessWidget {
             validator: validateEmail,
           ),
           PasswordInput(
+            initialValue: _password,
             onChanged: (value) {
               _password = value;
             },

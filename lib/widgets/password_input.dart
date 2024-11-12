@@ -16,7 +16,6 @@ class PasswordInput extends StatefulWidget {
 
 class _PasswordInputState extends State<PasswordInput> {
   bool _isObscure = true;
-  IconData _suffixIcon = Icons.visibility_off;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +25,7 @@ class _PasswordInputState extends State<PasswordInput> {
       onChanged: widget.onChanged,
       labelText: 'Mot de passe',
       obscureText: _isObscure,
-      initialValue: "1234567890",
+      initialValue: widget.initialValue,
       keyboardType: TextInputType.visiblePassword,
       validator: validatePassword,
       suffixIcon: GestureDetector(

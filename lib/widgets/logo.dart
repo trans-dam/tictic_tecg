@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:tictic/screens/welcome.dart';
 
 import '../contents/textes.dart';
 import '../styles/spacings.dart';
