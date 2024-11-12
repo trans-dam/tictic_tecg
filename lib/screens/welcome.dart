@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tictic/contents/textes.dart';
 import 'package:tictic/screens/home.dart';
+import 'package:tictic/screens/login.dart';
 import 'package:tictic/screens/register.dart';
 import 'package:tictic/styles/spacings.dart';
 import 'package:tictic/widgets/bullets.dart';
@@ -97,7 +98,13 @@ class _WelcomeState extends State<Welcome> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Button(
-                            onTap: () => {},
+                            onTap: () => {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => const Login(),
+                                ),
+                              )
+                            },
                             label: 'Je me connecte',
                             isPrimary: false,
                           ),
