@@ -8,7 +8,10 @@ class Button extends StatelessWidget {
   final GestureTapCallback? onTap;
   final String label;
 
-  const Button({required this.label, this.onTap, super.key});
+  final bool isPrimary;
+
+  const Button(
+      {required this.label, this.onTap, this.isPrimary = true, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +22,12 @@ class Button extends StatelessWidget {
             horizontal: kHorizontalPadding, vertical: kVerticalPaddingS),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(kBorderRadius),
-          color: kMainColor,
+          color: isPrimary ? kMainColor : kBackgroundColor,
         ),
         child: Text(
           label,
-          style: kButtonStyle,
+          style: kButtonStyle.apply(
+              color: isPrimary ? kBackgroundColor : kMainColor),
         ),
       ),
     );
