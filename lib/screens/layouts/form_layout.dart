@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tictic/screens/welcome.dart';
-import 'package:tictic/styles/colors.dart';
 import 'package:tictic/styles/fonts.dart';
 import 'package:tictic/styles/spacings.dart';
 import 'package:tictic/widgets/buttons/back_button.dart' as back_button;
-import 'package:tictic/widgets/forms/register.dart';
 import 'package:tictic/widgets/logo.dart';
 
 class FormLayout extends StatelessWidget {
