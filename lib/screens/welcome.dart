@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tictic/contents/textes.dart';
@@ -45,11 +44,11 @@ class _WelcomeState extends State<Welcome> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Spacer(),
+              const Spacer(),
               SvgPicture.asset("assets/icons/logo.svg",
                   height: MediaQuery.of(context).size.height * kLogoRatio,
                   semanticsLabel: kSemanticsLabelLogo),
-              Spacer(),
+              const Spacer(),
               const SizedBox(
                 height: kVerticalPaddingL,
               ),
@@ -69,7 +68,7 @@ class _WelcomeState extends State<Welcome> {
               const SizedBox(
                 height: kVerticalPadding,
               ),
-              Spacer(),
+              const Spacer(),
               Button(
                 label: kLoginWithoutAccount,
                 onTap: () {
@@ -81,7 +80,7 @@ class _WelcomeState extends State<Welcome> {
                 },
               ),
               Column(children: [
-                Padding(
+                const Padding(
                   padding: EdgeInsets.symmetric(horizontal: kHorizontalPadding),
                   child: TextDivider(),
                 ),

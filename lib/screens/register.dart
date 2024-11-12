@@ -110,7 +110,7 @@ class Register extends StatelessWidget {
                                   _registerFormKey.currentState!.validate()) {
                                 Navigator.of(context).push(
                                   MaterialPageRoute(
-                                    builder: (context) => Home(),
+                                    builder: (context) => const Home(),
                                   ),
                                 );
                               }

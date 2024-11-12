@@ -30,15 +30,11 @@ class _PasswordInputState extends State<PasswordInput> {
       keyboardType: TextInputType.visiblePassword,
       validator: validatePassword,
       suffixIcon: GestureDetector(
-        child: Icon(_suffixIcon, color: kMainColor),
+        child: Icon(_isObscure ? Icons.visibility_off : Icons.visibility,
+            color: kMainColor),
         onTap: () {
           setState(() {
             _isObscure = !_isObscure;
-            if (_isObscure) {
-              _suffixIcon = Icons.visibility_off;
-            } else {
-              _suffixIcon = Icons.visibility;
-            }
           });
         },
       ),
