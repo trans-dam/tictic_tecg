@@ -1,18 +1,36 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:tictic/contents/firebase_auth_exception_messages.dart';
 import 'package:tictic/screens/home.dart';
+import 'package:tictic/styles/colors.dart';
+import 'package:tictic/styles/others.dart';
 import 'package:tictic/utils/validations.dart';
 import 'package:tictic/widgets/button.dart';
+import 'package:tictic/widgets/error_message.dart';
 import 'package:tictic/widgets/password_input.dart';
 import 'package:tictic/widgets/text_input.dart';
 
-class RegisterForm extends StatelessWidget {
-  RegisterForm({super.key});
+import '../../styles/spacings.dart';
 
+class RegisterForm extends StatefulWidget {
+  const RegisterForm({super.key});
+
+  @override
+  State<RegisterForm> createState() => _RegisterFormState();
+}
+
+class _RegisterFormState extends State<RegisterForm> {
   final GlobalKey<FormState> _registerFormKey = GlobalKey<FormState>();
+
   String _firstName = "Ada";
+
   String _lastName = "Lovelace";
+
   String _email = "ada@example.com";
+
   String _password = "1234567890";
+
+  String _error = "";
 
   @override
   Widget build(BuildContext context) {
@@ -63,6 +81,8 @@ class RegisterForm extends StatelessWidget {
               _password = value;
             },
           ),
+          ErrorMessage(error: _error),
+          const SizedBox(height: kVerticalPaddingL),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
@@ -70,11 +90,23 @@ class RegisterForm extends StatelessWidget {
                   onTap: () async {
                     if (_registerFormKey.currentState != null &&
                         _registerFormKey.currentState!.validate()) {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => const Home(),
-                        ),
-                      );
+                      try {
+                        await FirebaseAuth.instance
+                            .createUserWithEmailAndPassword(
+                                email: _email, password: _password);
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const Home(),
+                          ),
+                        );
+                      } on FirebaseAuthException catch (FirebaseAuthException) {
+                        debugPrint(
+                            'Failed to create user: $FirebaseAuthException');
+                        setState(() {
+                          _error = kFirebaseAuthExceptionMessage[
+                              FirebaseAuthException.code]!;
+                        });
+                      }
                     }
                   },
                   label: 'Créer mon compte'),

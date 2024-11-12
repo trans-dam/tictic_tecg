@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tictic/screens/layouts/form_layout.dart';
 import 'package:tictic/screens/login.dart';
-import 'package:tictic/screens/welcome.dart';
 import 'package:tictic/styles/colors.dart';
 import 'package:tictic/widgets/forms/register.dart';
 

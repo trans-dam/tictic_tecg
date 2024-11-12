@@ -40,9 +40,9 @@ class LoginForm extends StatelessWidget {
             children: [
               Button(
                   onTap: () async {
-                    print(_registerFormKey);
                     if (_registerFormKey.currentState != null &&
                         _registerFormKey.currentState!.validate()) {
+
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) => const Home(),
