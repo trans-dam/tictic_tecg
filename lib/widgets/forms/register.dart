@@ -17,6 +17,7 @@ class RegisterForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Form(
+      key: _registerFormKey,
       child: Column(
         children: [
           TextInput(

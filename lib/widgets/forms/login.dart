@@ -15,6 +15,7 @@ class LoginForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Form(
+      key: _registerFormKey,
       child: Column(
         children: [
           TextInput(
@@ -39,6 +40,7 @@ class LoginForm extends StatelessWidget {
             children: [
               Button(
                   onTap: () async {
+                    print(_registerFormKey);
                     if (_registerFormKey.currentState != null &&
                         _registerFormKey.currentState!.validate()) {
                       Navigator.of(context).push(

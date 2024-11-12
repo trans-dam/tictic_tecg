@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:tictic/widgets/button.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
-        child: Text('Home'),
+        child: Button(
+            label: 'Je me déconnecte',
+            onTap: () {
+              Navigator.of(context).pop();
+            }),
       ),
     );
   }
