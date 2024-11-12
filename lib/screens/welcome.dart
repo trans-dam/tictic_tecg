@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tictic/contents/textes.dart';
+import 'package:tictic/screens/home.dart';
 import 'package:tictic/screens/register.dart';
 import 'package:tictic/styles/spacings.dart';
 import 'package:tictic/widgets/bullets.dart';
 import 'package:tictic/widgets/button.dart';
+import 'package:tictic/widgets/logo.dart';
 import 'package:tictic/widgets/text_diver.dart';
 import 'package:tictic/widgets/text_slider.dart';
 
@@ -45,9 +47,9 @@ class _WelcomeState extends State<Welcome> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Spacer(),
-              SvgPicture.asset("assets/icons/logo.svg",
-                  height: MediaQuery.of(context).size.height * kLogoRatio,
-                  semanticsLabel: kSemanticsLabelLogo),
+              const Logo(
+                navigateToWelcome: false,
+              ),
               const Spacer(),
               const SizedBox(
                 height: kVerticalPaddingL,
@@ -74,41 +76,52 @@ class _WelcomeState extends State<Welcome> {
                 onTap: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) => Register(),
+                      builder: (context) => const Home(),
                     ),
                   );
                 },
               ),
-              Column(children: [
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: kHorizontalPadding),
-                  child: TextDivider(),
-                ),
-                SingleChildScrollView(
-                  clipBehavior: Clip.none,
-                  scrollDirection: Axis.horizontal,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Button(
-                          onTap: () =>{},
-                          label: 'Je me connecte',
-                        ),
-                        const SizedBox(
-                          width: kHorizontalPadding,
-                        ),
-                        Button(
-                          onTap: () =>
-                          {},
-                          label: 'Créer mon compte',
-                        )
-                      ],
-                    ),
+              Column(
+                children: [
+                  const Padding(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: kHorizontalPadding),
+                    child: TextDivider(),
                   ),
-                )
-              ],)
+                  SingleChildScrollView(
+                    clipBehavior: Clip.none,
+                    scrollDirection: Axis.horizontal,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: kHorizontalPadding),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Button(
+                            onTap: () => {},
+                            label: 'Je me connecte',
+                            isPrimary: false,
+                          ),
+                          const SizedBox(
+                            width: kHorizontalPadding,
+                          ),
+                          Button(
+                            onTap: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => Register(),
+                                ),
+                              );
+                            },
+                            label: 'Créer mon compte',
+                            isPrimary: false,
+                          )
+                        ],
+                      ),
+                    ),
+                  )
+                ],
+              )
             ],
           ),
         ),
