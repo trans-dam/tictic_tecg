@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:tictic/screens/welcome.dart';
 
 import '../contents/textes.dart';
 import '../styles/spacings.dart';
@@ -14,7 +15,11 @@ class Logo extends StatelessWidget {
     return GestureDetector(
       onTap: navigateToWelcome
           ? () {
-              Navigator.of(context).pop();
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const Welcome(),
+                ),
+              );
             }
           : () {},
       child: SvgPicture.asset("assets/icons/logo.svg",
