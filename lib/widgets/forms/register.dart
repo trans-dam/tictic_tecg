@@ -82,7 +82,7 @@ class _RegisterFormState extends State<RegisterForm> {
             },
           ),
           ErrorMessage(error: _error),
-          const SizedBox(height: kVerticalPaddingL),
+          const SizedBox(height: kVerticalPaddingS),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [

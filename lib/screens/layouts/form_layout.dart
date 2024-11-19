@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tictic/screens/password_forgot.dart';
 import 'package:tictic/styles/fonts.dart';
 import 'package:tictic/styles/spacings.dart';
 import 'package:tictic/widgets/buttons/back_button.dart' as back_button;
@@ -8,9 +9,14 @@ class FormLayout extends StatelessWidget {
   final Widget form;
   final String label;
   final Widget link;
+  final bool addForgotPassword;
 
   const FormLayout(
-      {required this.form, required this.label, required this.link, super.key});
+      {required this.form,
+      required this.label,
+      required this.link,
+      this.addForgotPassword = false,
+      super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +49,24 @@ class FormLayout extends StatelessWidget {
                     style: kLabelStyle.apply(fontStyle: FontStyle.italic),
                   ),
                   link,
+                  addForgotPassword
+                      ? TextButton(
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => const PasswordForgot(),
+                              ),
+                            );
+                          },
+                          child: Text(
+                            'Mot de passe oublié ?',
+                            style: kLabelStyle.apply(
+                              fontStyle: FontStyle.italic,
+                              decoration: TextDecoration.underline,
+                            ),
+                          ),
+                        )
+                      : const SizedBox(),
                 ],
               ),
             ),
