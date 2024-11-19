@@ -35,39 +35,50 @@ class FormLayout extends StatelessWidget {
             child: Padding(
               padding:
                   const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  const back_button.BackButton(),
-                  const Logo(),
-                  const SizedBox(height: kVerticalPaddingL),
-                  form,
-                  const SizedBox(height: kVerticalPaddingL),
-                  Text(
-                    label,
-                    style: kLabelStyle.apply(fontStyle: FontStyle.italic),
-                  ),
-                  link,
-                  addForgotPassword
-                      ? TextButton(
-                          onPressed: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => const PasswordForgot(),
+              child: ConstrainedBox(
+                constraints: BoxConstraints(
+                  minHeight: MediaQuery.of(context).size.height -
+                      MediaQuery.of(context).padding.top -
+                      MediaQuery.of(context).padding.bottom,
+                ),
+                child: IntrinsicHeight(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const back_button.BackButton(),
+                      const Logo(),
+                      const SizedBox(height: kVerticalPaddingL),
+                      form,
+                      const SizedBox(height: kVerticalPaddingL),
+                      Text(
+                        label,
+                        style: kLabelStyle.apply(fontStyle: FontStyle.italic),
+                      ),
+                      link,
+                      const Spacer(),
+                      addForgotPassword
+                          ? TextButton(
+                              onPressed: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const PasswordForgot(),
+                                  ),
+                                );
+                              },
+                              child: Text(
+                                'Mot de passe oublié ?',
+                                style: kLabelStyle.apply(
+                                  fontStyle: FontStyle.italic,
+                                  decoration: TextDecoration.underline,
+                                ),
                               ),
-                            );
-                          },
-                          child: Text(
-                            'Mot de passe oublié ?',
-                            style: kLabelStyle.apply(
-                              fontStyle: FontStyle.italic,
-                              decoration: TextDecoration.underline,
-                            ),
-                          ),
-                        )
-                      : const SizedBox(),
-                ],
+                            )
+                          : const SizedBox(),
+                    ],
+                  ),
+                ),
               ),
             ),
           ),
