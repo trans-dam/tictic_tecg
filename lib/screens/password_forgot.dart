@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:tictic/screens/layouts/form_layout.dart';
 import 'package:tictic/screens/register.dart';
 import 'package:tictic/styles/colors.dart';
-import 'package:tictic/widgets/forms/login.dart';
 import 'package:tictic/widgets/forms/password_forgot_form.dart';
 
 import '../styles/fonts.dart';
