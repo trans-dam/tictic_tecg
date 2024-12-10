@@ -1,9 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:tictic/contents/firebase_auth_exception_messages.dart';
-import 'package:tictic/screens/home.dart';
-import 'package:tictic/styles/colors.dart';
-import 'package:tictic/styles/others.dart';
+import 'package:tictic/screens/home/home.dart';
 import 'package:tictic/utils/validations.dart';
 import 'package:tictic/widgets/button.dart';
 import 'package:tictic/widgets/error_message.dart';
@@ -48,7 +46,7 @@ class _RegisterFormState extends State<RegisterForm> {
                 _firstName = value;
               },
               validator: (value) {
-                return validateName(value, 'Prénom');
+                return validateString(value, 'Prénom');
               },
               tooltipMessage: 'Votre prénom sera visible par vos amis'),
           TextInput(
@@ -61,7 +59,7 @@ class _RegisterFormState extends State<RegisterForm> {
               },
               keyboardType: TextInputType.name,
               validator: (value) {
-                return validateName(value, 'Nom');
+                return validateString(value, 'Nom');
               },
               tooltipMessage: 'Votre nom permet d’éviter les homonymes'),
           TextInput(
@@ -91,20 +89,20 @@ class _RegisterFormState extends State<RegisterForm> {
                     if (_registerFormKey.currentState != null &&
                         _registerFormKey.currentState!.validate()) {
                       try {
-                        await FirebaseAuth.instance
-                            .createUserWithEmailAndPassword(
-                                email: _email, password: _password);
+                        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                            email: _email, password: _password);
+
                         Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: (context) => const Home(),
                           ),
                         );
-                      } on FirebaseAuthException catch (FirebaseAuthException) {
+                      } on FirebaseAuthException catch (firebaseAuthException) {
                         debugPrint(
                             'Failed to create user: $FirebaseAuthException');
                         setState(() {
                           _error = kFirebaseAuthExceptionMessage[
-                              FirebaseAuthException.code]!;
+                              firebaseAuthException.code]!;
                         });
                       }
                     }

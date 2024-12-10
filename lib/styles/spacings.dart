@@ -13,8 +13,7 @@ const kVerticalPaddingXL = kVerticalPaddingL * 2;
 const kHorizontalPaddingXXL = kHorizontalPaddingXL * 2;
 const kVerticalPaddingXXL = kVerticalPaddingXL * 2;
 
-
-const kLogoSize = 44.0;
+const kLogoSize = 33.0;
 const kProfileSize = 108.0;
 const kProfileSizeSmall = kProfileSize * .8;
 const kLogoRatio = .16;

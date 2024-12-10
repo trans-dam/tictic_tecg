@@ -1,5 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:tictic/screens/home.dart';
+import 'package:tictic/screens/home/home.dart';
 import 'package:tictic/utils/validations.dart';
 import 'package:tictic/widgets/button.dart';
 import 'package:tictic/widgets/password_input.dart';
@@ -42,12 +43,19 @@ class LoginForm extends StatelessWidget {
                   onTap: () async {
                     if (_registerFormKey.currentState != null &&
                         _registerFormKey.currentState!.validate()) {
-
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => const Home(),
-                        ),
-                      );
+                      FirebaseAuth.instance
+                          .signInWithEmailAndPassword(
+                        email: _email,
+                        password: _password,
+                      ).then((value) {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const Home(),
+                          ),
+                        );
+                      }).catchError((error) {
+                        debugPrint(error);
+                      });
                     }
                   },
                   label: 'Je me connecte'),

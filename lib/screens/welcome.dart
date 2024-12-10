@@ -1,7 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:tictic/contents/textes.dart';
-import 'package:tictic/screens/home.dart';
+import 'package:tictic/screens/home/home.dart';
 import 'package:tictic/screens/login.dart';
 import 'package:tictic/screens/register.dart';
 import 'package:tictic/styles/spacings.dart';

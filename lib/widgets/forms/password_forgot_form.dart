@@ -1,8 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:tictic/screens/home.dart';
 import 'package:tictic/utils/validations.dart';
 import 'package:tictic/widgets/button.dart';
-import 'package:tictic/widgets/password_input.dart';
 import 'package:tictic/widgets/text_input.dart';
 
 class PasswordForgotForm extends StatelessWidget {
@@ -34,7 +33,9 @@ class PasswordForgotForm extends StatelessWidget {
               Button(
                   onTap: () async {
                     if (_registerFormKey.currentState != null &&
-                        _registerFormKey.currentState!.validate()) {}
+                        _registerFormKey.currentState!.validate()) {
+                      FirebaseAuth.instance.sendPasswordResetEmail(email: _email);
+                    }
                   },
                   label: 'Je réinitialise mon mot de passe'),
             ],

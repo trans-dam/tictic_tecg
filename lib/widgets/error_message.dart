@@ -11,21 +11,23 @@ class ErrorMessage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(
-        vertical: error.isEmpty ? 0 : kVerticalPaddingS,
-        horizontal: error.isEmpty ? 0 : kHorizontalPadding,
-      ),
-      decoration: BoxDecoration(
-        color: Colors.red,
-        borderRadius: BorderRadius.circular(kBorderRadius),
-        boxShadow: error.isEmpty ? [] : [kShadow],
-      ),
-      child: Text(
-        error,
-        style: const TextStyle(
-            color: kBackgroundColor, fontWeight: FontWeight.bold),
-      ),
-    );
+    return error.isNotEmpty
+        ? Container(
+            padding: const EdgeInsets.symmetric(
+              vertical: kVerticalPaddingS,
+              horizontal: kHorizontalPadding,
+            ),
+            decoration: BoxDecoration(
+              color: Colors.red,
+              borderRadius: BorderRadius.circular(kBorderRadius),
+              boxShadow: [kShadow],
+            ),
+            child: Text(
+              error,
+              style: const TextStyle(
+                  color: kBackgroundColor, fontWeight: FontWeight.bold),
+            ),
+          )
+        : Container();
   }
 }

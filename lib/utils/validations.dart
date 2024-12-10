@@ -12,7 +12,7 @@ String? validateEmail(value) {
   return null;
 }
 
-String? validateName(value, fieldName) {
+String? validateString(value, fieldName) {
   if (value == null || value.trim().isEmpty) {
     return "Veuillez entrer votre $fieldName";
   } else if (!validCharacters.hasMatch(value)) {

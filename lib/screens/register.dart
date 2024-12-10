@@ -12,7 +12,7 @@ class Register extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FormLayout(
-      form: RegisterForm(),
+      form: const RegisterForm(),
       label: 'J’ai déjà un compte',
       link: TextButton(
         onPressed: () {
